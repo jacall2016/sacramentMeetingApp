@@ -1,5 +1,9 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: "Times New Roman";
+    color: #08111f;
+    background-color: #fefdff;
+    background-image: "path to image";
 }
 
 @media (min-width: 768px) {
@@ -10,6 +14,41 @@ html {
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.bg-color1 {
+    background-color: #59748f;
+    color: #fff; /* Text color */
+}
+
+.bg-color2 {
+    background-color: #183159;
+    color: #fff;
+}
+
+.bg-color3 {
+    background-color: #fefdff;
+    color: #08111f;
+}
+
+.text-color1 {
+    color: #59748f;
+}
+
+.text-color2 {
+    color: #183159;
+}
+
+.text-color3 {
+    color: #fefdff;
+}
+
+.link {
+    color: #59748f;
+}
+
+.link:hover {
+    color: #183159;
 }
 
 html {
