@@ -2,8 +2,8 @@
 {
     public class Hymn
     {
-        int ID;
-        string Name;
-
+        
+        public int Id { get; set; }
+        public string? Title { get; set; }
     }
 }
