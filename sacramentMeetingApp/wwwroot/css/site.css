@@ -1,9 +1,11 @@
-html {
-    font-size: 14px;
+body {
+    font-size: 16px;
     font-family: "Times New Roman";
     color: #08111f;
     background-color: #fefdff;
-    background-image:url("../resources/Chapel_01.png")
+    background-image:url("../resources/Chapel_03.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @media (min-width: 768px) {
@@ -23,7 +25,7 @@ html {
 
 .bg-color2 {
     background-color: #183159;
-    color: #fff;
+    color: #ffffff;
 }
 
 .bg-color3 {
@@ -50,6 +52,19 @@ html {
 .link:hover {
     color: #183159;
 }
+
+.nav-link,
+.logo {
+  color: #ffffff;
+  padding: 5px 7px;
+}
+.nav-link:hover, .navbar-brand:hover {
+  background-color: #ffffff;
+  color: #183159;
+  border-radius: 10px;
+  padding: 5px 7px;
+}
+
 
 html {
   position: relative;

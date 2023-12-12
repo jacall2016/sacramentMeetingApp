@@ -4,9 +4,13 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Details</h1>
+    <div>
+        <a class="btn btn-primary bg-color1" asp-page="./Edit" asp-route-id="@Model.SacramentProgram.Id">Edit</a> |
+        <a class="btn btn-primary bg-color1" asp-page="Index">Back to List</a>
+    </div>
+</div>
 <div>
     <h4>SacramentProgram</h4>
     <hr />
@@ -87,8 +91,4 @@
             </dd>
         }
     </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.SacramentProgram.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>

@@ -4,145 +4,150 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Edit</h1>
+    <a class="btn btn-primary bg-color1" asp-page="Index">Back to List</a>
+</div>
 
 <h4>Sacrament Meeting Planner</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SacramentProgram.Id" />
-            <div class="form-group">
-                <label asp-for="SacramentProgram.Date" class="control-label"></label>
-                <input asp-for="SacramentProgram.Date" class="form-control" />
-                <span asp-validation-for="SacramentProgram.Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.UnitName" class="control-label"></label>
-                @{
-                    var unitNameOptions = ViewData["UnitNameOptions"] as SelectList;
-                    <select asp-for="SacramentProgram.UnitName" asp-items="@unitNameOptions" class="form-select"></select>
-                }
-                <span asp-validation-for="SacramentProgram.UnitName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.PresidingLeader" class="control-label"></label>
-                @{
-                    var presidingLeaderOptions = ViewData["memberNameOptions"] as SelectList;
-                    <select asp-for="SacramentProgram.PresidingLeader" asp-items="@presidingLeaderOptions"
-                        class="form-select"></select>
-                }
-                <span asp-validation-for="SacramentProgram.PresidingLeader" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.ConductingLeader" class="control-label"></label>
-                @{
-                    var conductingLeaderOptions = ViewData["memberNameOptions"] as SelectList;
-                    <select asp-for="SacramentProgram.ConductingLeader" asp-items="@conductingLeaderOptions"
-                        class="form-select"></select>
-                }
-                <span asp-validation-for="SacramentProgram.ConductingLeader" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.OpeningSong" class="control-label"></label>
-                <select asp-for="SacramentProgram.OpeningSong" class="form-select NewSacramentProgram_Hyms">
-                    @if (!string.IsNullOrEmpty(Model.SacramentProgram.OpeningSong))
-                    {
-                        <option selected value="@Model.SacramentProgram.OpeningSong">@Model.SacramentProgram.OpeningSong
-                        </option>
+    <div class="col-md-12">
+        <form method="post" class="d-flex flex-row gap-4">
+            <div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SacramentProgram.Id" />
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.Date" class="control-label"></label>
+                    <input asp-for="SacramentProgram.Date" class="form-control" />
+                    <span asp-validation-for="SacramentProgram.Date" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.UnitName" class="control-label"></label>
+                    @{
+                        var unitNameOptions = ViewData["UnitNameOptions"] as SelectList;
+                        <select asp-for="SacramentProgram.UnitName" asp-items="@unitNameOptions"
+                            class="form-select"></select>
                     }
-                </select>
-                <span asp-validation-for="SacramentProgram.OpeningSong" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.SacramentHymn" class="control-label"></label>
-                <select asp-for="SacramentProgram.SacramentHymn" class="form-select NewSacramentProgram_Hyms">
-                    @if (!string.IsNullOrEmpty(Model.SacramentProgram.OpeningSong))
-                    {
-                        <option selected value="@Model.SacramentProgram.SacramentHymn">@Model.SacramentProgram.SacramentHymn
-                        </option>
+                    <span asp-validation-for="SacramentProgram.UnitName" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.PresidingLeader" class="control-label"></label>
+                    @{
+                        var presidingLeaderOptions = ViewData["memberNameOptions"] as SelectList;
+                        <select asp-for="SacramentProgram.PresidingLeader" asp-items="@presidingLeaderOptions"
+                            class="form-select"></select>
                     }
-                </select>
-                <span asp-validation-for="SacramentProgram.SacramentHymn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.ClosingSong" class="control-label"></label>
-                <select asp-for="SacramentProgram.ClosingSong" class="form-select NewSacramentProgram_Hyms">
-                    @if (!string.IsNullOrEmpty(Model.SacramentProgram.ClosingSong))
-                    {
-                        <option selected value="@Model.SacramentProgram.ClosingSong">@Model.SacramentProgram.ClosingSong
-                        </option>
+                    <span asp-validation-for="SacramentProgram.PresidingLeader" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.ConductingLeader" class="control-label"></label>
+                    @{
+                        var conductingLeaderOptions = ViewData["memberNameOptions"] as SelectList;
+                        <select asp-for="SacramentProgram.ConductingLeader" asp-items="@conductingLeaderOptions"
+                            class="form-select"></select>
                     }
-                </select>
-                <span asp-validation-for="SacramentProgram.ClosingSong" class="text-danger"></span>
+                    <span asp-validation-for="SacramentProgram.ConductingLeader" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.OpeningSong" class="control-label"></label>
+                    <select asp-for="SacramentProgram.OpeningSong" class="form-select NewSacramentProgram_Hyms">
+                        @if (!string.IsNullOrEmpty(Model.SacramentProgram.OpeningSong))
+                        {
+                            <option selected value="@Model.SacramentProgram.OpeningSong">@Model.SacramentProgram.OpeningSong
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SacramentProgram.OpeningSong" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.SacramentHymn" class="control-label"></label>
+                    <select asp-for="SacramentProgram.SacramentHymn" class="form-select NewSacramentProgram_Hyms">
+                        @if (!string.IsNullOrEmpty(Model.SacramentProgram.OpeningSong))
+                        {
+                            <option selected value="@Model.SacramentProgram.SacramentHymn">
+                                @Model.SacramentProgram.SacramentHymn
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SacramentProgram.SacramentHymn" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.ClosingSong" class="control-label"></label>
+                    <select asp-for="SacramentProgram.ClosingSong" class="form-select NewSacramentProgram_Hyms">
+                        @if (!string.IsNullOrEmpty(Model.SacramentProgram.ClosingSong))
+                        {
+                            <option selected value="@Model.SacramentProgram.ClosingSong">@Model.SacramentProgram.ClosingSong
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SacramentProgram.ClosingSong" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.SpecialNumber" class="control-label"></label>
+                    <input asp-for="SacramentProgram.SpecialNumber" class="form-control" />
+                    <span asp-validation-for="SacramentProgram.SpecialNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.OpeningPrayer" class="control-label"></label>
+                    @{
+                        var openingPrayerOptions = ViewData["memberNameOptions"] as SelectList;
+                        <select asp-for="SacramentProgram.OpeningPrayer" asp-items="@openingPrayerOptions"
+                            class="form-select"></select>
+                    }
+                    <span asp-validation-for="SacramentProgram.OpeningPrayer" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SacramentProgram.ClosingPrayer" class="control-label"></label>
+                    @{
+                        var closingPrayerOptions = ViewData["memberNameOptions"] as SelectList;
+                        <select asp-for="SacramentProgram.ClosingPrayer" asp-items="@closingPrayerOptions"
+                            class="form-select"></select>
+                    }
+                    <span asp-validation-for="SacramentProgram.ClosingPrayer" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.SpecialNumber" class="control-label"></label>
-                <input asp-for="SacramentProgram.SpecialNumber" class="form-control" />
-                <span asp-validation-for="SacramentProgram.SpecialNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.OpeningPrayer" class="control-label"></label>
-                @{
-                    var openingPrayerOptions = ViewData["memberNameOptions"] as SelectList;
-                    <select asp-for="SacramentProgram.OpeningPrayer" asp-items="@openingPrayerOptions"
-                        class="form-select"></select>
-                }
-                <span asp-validation-for="SacramentProgram.OpeningPrayer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentProgram.ClosingPrayer" class="control-label"></label>
-                @{
-                    var closingPrayerOptions = ViewData["memberNameOptions"] as SelectList;
-                    <select asp-for="SacramentProgram.ClosingPrayer" asp-items="@closingPrayerOptions"
-                        class="form-select"></select>
-                }
-                <span asp-validation-for="SacramentProgram.ClosingPrayer" class="text-danger"></span>
-            </div>
-            <div class="d-flex mt-3 justify-content-between align-items-center">
-                <p class="my-auto">Speakers</p>
-                <button id="addTalkButtonUpdate" class="btn btn-outline-primary" type="button">Add Speaker</button>
-            </div>
-            <div id="talksContainer" class="mt-4 mb-4 p-2">
-                @for (int i = 0; i < Model.SacramentProgram.Talk?.Count; i++)
-                {
-                    <div class="row talk-row border border-primary mb-2 p-2 rounded-3">
-                        <div class="d-flex justify-content-between">
-                            <p>Speaker N° @(i + 1)</p>
-                            <button type="button" class="remove-talk btn-close" aria-label="Close"></button>
-                        </div>
-                        <div>
-                            <div class="mb-3">
-                                <label asp-for="SacramentProgram.Talk[i].SpeakerName" class="form-label">Speaker
-                                    Name</label>
-                                @{
-                                    var speakerNameOptions = ViewData["memberNameOptions"] as SelectList;
-                                    <select asp-for="SacramentProgram.Talk[i].SpeakerName" asp-items="@speakerNameOptions"
-                                        type="text" class="form-select"></select>
-                                }
+            <div class="d-flex flex-column">
+                <div class="d-flex mt-3 justify-content-between align-items-center">
+                    <p class="my-auto">Speakers</p>
+                    <button id="addTalkButtonUpdate" class="btn btn-outline-primary" type="button">Add Speaker</button>
+                </div>
+                <div id="talksContainer" class="mt-4 mb-4 p-2">
+                    @for (int i = 0; i < Model.SacramentProgram.Talk?.Count; i++)
+                    {
+                        <div class="row talk-row border border-primary mb-2 p-2 rounded-3">
+                            <div class="d-flex justify-content-between">
+                                <p>Speaker N° @(i + 1)</p>
+                                <button type="button" class="remove-talk btn-close" aria-label="Close"></button>
                             </div>
-                            <div class="mb-3">
-                                <label asp-for="SacramentProgram.Talk[i].Topic" class="form-label">Topic</label>
-                                <input asp-for="SacramentProgram.Talk[i].Topic" type="text" class="form-control" />
+                            <div>
+                                <div class="mb-3">
+                                    <label asp-for="SacramentProgram.Talk[i].SpeakerName" class="form-label">Speaker
+                                        Name</label>
+                                    @{
+                                        var speakerNameOptions = ViewData["memberNameOptions"] as SelectList;
+                                        <select asp-for="SacramentProgram.Talk[i].SpeakerName" asp-items="@speakerNameOptions"
+                                            type="text" class="form-select"></select>
+                                    }
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="SacramentProgram.Talk[i].Topic" class="form-label">Topic</label>
+                                    <input asp-for="SacramentProgram.Talk[i].Topic" type="text" class="form-control" />
+                                </div>
+                                <input asp-for="SacramentProgram.Talk[i].Id" type="hidden" />
+                                <input asp-for="SacramentProgram.Talk[i].IsDeleted" type="hidden" value="false" />
                             </div>
-                            <input asp-for="SacramentProgram.Talk[i].Id" type="hidden" />
-                            <input asp-for="SacramentProgram.Talk[i].IsDeleted" type="hidden" value="false" />
                         </div>
-                    </div>
-                }
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                    }
+                </div>
+                <div class="form-group align-self-end">
+                    <input type="submit" value="Save" class="btn btn-primary bg-color2" />
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
 
 @section Scripts {
     <script>

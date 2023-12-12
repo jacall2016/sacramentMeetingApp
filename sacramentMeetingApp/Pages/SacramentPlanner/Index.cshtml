@@ -5,45 +5,85 @@
     ViewData["Title"] = "Meetings";
 }
 
-<h1>Sacrament Planner</h1>
+<div class="bg-body-secondary">
+    <section id="title-quote-container" class="col-12 d-flex justify-content-between align-items-center">
+        <h1>Sacrament Planner</h1>
+        <a class="btn btn-primary bg-color2" asp-page="Create"><i class="bi bi-plus-lg"></i> Create New</a>
+    </section>
+    <section id="filters-container" class="col-2">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Search by Unit Name: </label>
+                <input type="text" asp-route-searchTerm="" asp-for="SearchTerm" placeholder="Search by Unit"
+                    class="form-control" aria-label="Search box" />
+                <input type="hidden" asp-route-sortBy="@(Model.sortBy)" />
+                <button class="btn-search btn btn-secondary bg-color2" type="submit">
+                    Search <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+        <div class="sort-btn btn-group d-grid gap-1" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle bg-color2" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Sort
+                </button>
+                <ul class="dropdown-menu">
+                    <a class="dropdown-item" asp-page="./Index" asp-route-searchTerm="@Model.SearchTerm"
+                        asp-route-sortBy="Date_Asc">Sort by Date Ascending (A-Z)</a>
+                    <a class="dropdown-item" asp-page="./Index" asp-route-searchTerm="@Model.SearchTerm"
+                        asp-route-sortBy="Date_Desc">Sort by Date Descending (Z-A)</a>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SacramentProgram[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SacramentProgram[0].UnitName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SacramentProgram[0].PresidingLeader)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.SacramentProgram)
-        {
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PresidingLeader)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                    <a asp-page="../PrintDocument" asp-route-id="@item.Id" target="_blank">View Program</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.SacramentProgram[0].Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SacramentProgram[0].UnitName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SacramentProgram[0].PresidingLeader)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{
+                if (Model.SacramentProgram.Count() == 0)
+                {
+                    <td>There are no meetings to display.</td>
+                }
+            }
+            @foreach (var item in Model.SacramentProgram)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PresidingLeader)
+                    </td>
+                    <td class="btn-group">
+                        <a class="btn btn-primary bg-color2" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-primary bg-color2" asp-page="./Edit" asp-route-id="@item.Id"><i
+                                class="bi bi-pencil-fill"></i></a>
+                        <a class="btn btn-primary bg-color2" asp-page="./Delete" asp-route-id="@item.Id"><i
+                                class="bi bi-trash"></i></a>
+                        <a class="btn btn-primary bg-color2" asp-page="../PrintDocument" asp-route-id="@item.Id"
+                            target="_blank">View Program</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

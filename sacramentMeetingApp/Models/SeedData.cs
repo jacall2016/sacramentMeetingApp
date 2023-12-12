@@ -49,11 +49,11 @@ public static class SeedData
             }
 
             context.Unit.AddRange(
-                new Unit { UnitName = "Sunset Ward", UnitType = UnitType.Ward },
-                new Unit { UnitName = "Riverside Branch", UnitType = UnitType.Branch },
-                new Unit { UnitName = "Mountain View Unit", UnitType = UnitType.Unit },
-                new Unit { UnitName = "Ocean Side Ward", UnitType = UnitType.Ward },
-                new Unit { UnitName = "Green Valley Branch", UnitType = UnitType.Branch }
+                new Unit { UnitName = "Sunset", UnitType = UnitType.Ward },
+                new Unit { UnitName = "Riverside", UnitType = UnitType.Branch },
+                new Unit { UnitName = "Mountain View", UnitType = UnitType.Unit },
+                new Unit { UnitName = "Ocean Side", UnitType = UnitType.Ward },
+                new Unit { UnitName = "Green Valley", UnitType = UnitType.Branch }
             );
 
             context.SaveChanges();
