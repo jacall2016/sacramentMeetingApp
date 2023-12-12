@@ -1,0 +1,49 @@
+﻿@page
+@model sacramentMeetingApp.Pages.SacramentPlanner.IndexModel
+
+@{
+    ViewData["Title"] = "Meetings";
+}
+
+<h1>Sacrament Planner</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SacramentProgram[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SacramentProgram[0].UnitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SacramentProgram[0].PresidingLeader)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SacramentProgram)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PresidingLeader)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="../PrintDocument" asp-route-id="@item.Id" target="_blank">View Program</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

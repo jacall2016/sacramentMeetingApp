@@ -2,16 +2,14 @@
 {
     public class Unit
     {
-        String UnitName;
-        Int UnitID;
-        UnitType UnitType;
-        Member[] Leadership;
+        public int UnitID { get; set; }
+        public string UnitName { get; set; } = default!;
+        public UnitType UnitType { get; set; }
     }
-
-    public enum UnitType
-    {
-        Unit,
-        Branch,
-        Ward
-    }
+}
+public enum UnitType
+{
+    Unit,
+    Branch,
+    Ward
 }

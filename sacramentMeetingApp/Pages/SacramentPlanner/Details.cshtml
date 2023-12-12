@@ -1,0 +1,94 @@
+﻿@page
+@model sacramentMeetingApp.Pages.SacramentPlanner.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SacramentProgram</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.UnitName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.UnitName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.PresidingLeader)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.PresidingLeader)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.ConductingLeader)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.ConductingLeader)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.OpeningSong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.OpeningSong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.SacramentHymn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.SacramentHymn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.ClosingSong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.ClosingSong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.SpecialNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.SpecialNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.OpeningPrayer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.OpeningPrayer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SacramentProgram.ClosingPrayer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SacramentProgram.ClosingPrayer)
+        </dd>
+        @foreach (var speaker in Model.SacramentProgram.Talk)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => speaker.SpeakerName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => speaker.SpeakerName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => speaker.Topic)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => speaker.Topic)
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SacramentProgram.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

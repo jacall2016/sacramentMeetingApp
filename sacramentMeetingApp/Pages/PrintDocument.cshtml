@@ -1,0 +1,147 @@
+﻿@page
+@model PrintDocumentModel
+@{
+    ViewData["Title"] = "View Program";
+}
+<div class="title-document">
+    <h1>Sacrament Program</h1>
+    <h2>@Html.DisplayFor(model => model.SacramentProgram.UnitName)</h2>
+    <h3>@Html.DisplayFor(model => model.SacramentProgram.Date)</h3>
+    <hr />
+</div>
+<div class="pdf-container">
+    <div class="container-program-info">
+        <h5>Presiding</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.PresidingLeader)</p>
+    </div>
+    <div class="container-program-info">
+        <h5>Conducting</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.ConductingLeader)</p>
+    </div>
+    <div class="container-program-info">
+        <h5>Opening Hymn</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.OpeningSong)</p>
+    </div>
+    <div class="container-program-info">
+        <h5>Opening Prayer</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.OpeningPrayer)</p>
+    </div>
+    <div class="container-program-info">
+        <h5>Sacrament Hymn</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.SacramentHymn)</p>
+    </div>
+    <p class="sacrament-ordenance">Passing of the Sacrament by the Aaronic Priethood</p>
+    <h5>Speakers</h5>
+    <div class="container-all-speaker">
+        @if (Model.SacramentProgram.Talk.Count > 3)
+        {
+            // Render the first two talks
+            for (int i = 0; i < 3; i++)
+            {
+                var speaker = Model.SacramentProgram.Talk[i];
+                <div class="speaker-container">
+                    <p>@Html.DisplayFor(_ => speaker.SpeakerName)</p>
+                    <p>@Html.DisplayFor(_ => speaker.Topic)</p>
+                </div>
+            }
+            <div class="hymn-section">
+                <p>@Html.DisplayFor(model => model.SacramentProgram.SpecialNumber)</p>
+            </div>
+            // Render the remaining talks
+            for (int i = 3; i < Model.SacramentProgram.Talk.Count; i++)
+            {
+                var speaker = Model.SacramentProgram.Talk[i];
+                <div class="speaker-container">
+                    <p>@Html.DisplayFor(_ => speaker.SpeakerName)</p>
+                    <p>@Html.DisplayFor(_ => speaker.Topic)</p>
+                </div>
+            }
+        }
+        else if (Model.SacramentProgram.Talk.Count == 3)
+        {
+            // Render all talks
+            for (int i = 0; i < 2; i++)
+            {
+                var speaker = Model.SacramentProgram.Talk[i];
+                <div class="speaker-container">
+                    <p>@Html.DisplayFor(_ => speaker.SpeakerName)</p>
+                    <p>@Html.DisplayFor(_ => speaker.Topic)</p>
+                </div>
+            }
+            <div class="hymn-section">
+                <p>@Html.DisplayFor(model => model.SacramentProgram.SpecialNumber)</p>
+            </div>
+            // Render the remaining talks
+            for (int i = 2; i < Model.SacramentProgram.Talk.Count; i++)
+            {
+                var speaker = Model.SacramentProgram.Talk[i];
+                <div class="speaker-container">
+                    <p>@Html.DisplayFor(_ => speaker.SpeakerName)</p>
+                    <p>@Html.DisplayFor(_ => speaker.Topic)</p>
+                </div>
+            }
+        }
+        else
+        {
+            // Render all talks
+            for (int i = 0; i < Model.SacramentProgram.Talk.Count; i++)
+            {
+                var speaker = Model.SacramentProgram.Talk[i];
+                <div class="speaker-container">
+                    <p>@Html.DisplayFor(_ => speaker.SpeakerName)</p>
+                    <p>@Html.DisplayFor(_ => speaker.Topic)</p>
+                </div>
+            }
+            <div class="hymn-section">
+                <p>@Html.DisplayFor(model => model.SacramentProgram.SpecialNumber)</p>
+            </div>
+        }
+
+
+    </div>
+    <div class="container-program-info">
+        <h5>Closing Hymn</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.ClosingSong)</p>
+    </div>
+    <div class="container-program-info">
+        <h5>Closing Prayer</h5>
+        <p>@Html.DisplayFor(model => model.SacramentProgram.ClosingPrayer)</p>
+    </div>
+</div>
+
+@if (!(bool)ViewData["IsGeneratingPdf"])
+{
+    <form method="post">
+        <button type="submit">Print Sacrament Planner</button>
+    </form>
+}
+
+<style>
+    .title-document {
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .pdf-container {
+        margin: 0 auto;
+        max-width: 764px;
+    }
+
+    .container-program-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sacrament-ordenance {
+        text-align: center;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .speaker-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
