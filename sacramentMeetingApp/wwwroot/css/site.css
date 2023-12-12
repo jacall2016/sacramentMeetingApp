@@ -3,7 +3,7 @@ html {
     font-family: "Times New Roman";
     color: #08111f;
     background-color: #fefdff;
-    background-image: "path to image";
+    background-image:url("../resources/Chapel_01.png")
 }
 
 @media (min-width: 768px) {
